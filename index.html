@@ -1,103 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ko Hein Game Diamond Shop</title>
   <style>
     body {
-      font-family: sans-serif;
-      background-color: #0c1533;
+      background-color: #0c1a44;
       color: white;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
+      font-family: 'Arial', sans-serif;
       padding: 20px;
     }
-    .grid {
+    h1, h2 {
+      text-align: center;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+    .diamond-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 15px;
+      margin-top: 20px;
     }
-    .card {
+    .diamond-item {
       background-color: white;
       color: black;
+      padding: 15px;
+      text-align: center;
       border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-    }
-    .section-title {
-      text-align: center;
-      font-size: 18px;
-      margin: 30px 0 10px;
-    }
-    .buy-now {
-      background-color: gray;
-      color: white;
-      padding: 15px;
-      text-align: center;
       font-weight: bold;
+    }
+    .diamond-item.selected {
+      background-color: #3b82f6;
+      color: white;
+    }
+    #accountDisplay {
+      background-color: #111d4a;
+      padding: 15px;
       border-radius: 10px;
-      margin: 20px;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    .account-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px 0;
+    }
+    .account-entry button {
+      background-color: #3b82f6;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      padding: 5px 10px;
+      cursor: pointer;
     }
     .button-group {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 10px;
-      margin-top: 20px;
+      margin-top: 30px;
     }
-    .contact-button {
-      background-color: #1e90ff;
+    .button-group .buy-now, .contact-button {
+      padding: 12px;
+      background-color: #2563eb;
       color: white;
-      text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-weight: bold;
-      display: inline-block;
-      width: 250px;
       text-align: center;
+      border-radius: 8px;
+      text-decoration: none;
     }
-    .contact-button:hover {
-      background-color: #0f70d1;
+    .button-group .buy-now:hover, .contact-button:hover {
+      background-color: #1e40af;
     }
   </style>
 </head>
 <body>
+  <h1>Ko Hein Game Diamond Shop</h1>
+  <h2>ယနေ့အတွက် စျေးနူန်းများ: 2.5.2025 Close</h2>
 
-  <div class="section-title">ယနေ့အတွက် စျေးနှုန်းများ ဖြစ်ပါသည်(2.5.2025 Close)</div>
+  <input type="text" id="accountId" placeholder="Account ID" oninput="this.value=this.value.replace(/[^0-9]/g,'')" />
+  <input type="text" id="serverId" placeholder="Server ID" oninput="this.value=this.value.replace(/[^0-9]/g,'')" />
+  <select id="paymentMethod">
+    <option disabled selected>ငွေလွှဲနည်းရွေးပါ</option>
+    <option value="WAVE Pay">Wave Pay</option>
+    <option value="KBZ Pay">KBZ Pay</option>
+  </select>
+  <input type="text" id="transactionId" placeholder="Last 5 Digits of Transaction ID" oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,5)" />
 
-  <div class="container">
-    <div class="grid">
-      <div class="card">MMK 6,500<br>Weekly Pass</div>
-      <div class="card">MMK 5,500<br>DiamondX86</div>
-      <div class="card">MMK 10,500<br>DiamondX172</div>
-      <div class="card">MMK 15,500<br>DiamondX257</div>
-      <div class="card">MMK 21,000<br>DiamondX343</div>
-      <div class="card">MMK 26,000<br>DiamondX429</div>
-      <div class="card">MMK 31,000<br>DiamondX514</div>
-      <div class="card">MMK 36,500<br>DiamondX600</div>
-      <div class="card">MMK 41,000<br>DiamondX706</div>
-      <div class="card">MMK 51,500<br>DiamondX878</div>
-      <div class="card">MMK 62,000<br>DiamondX1050</div>
-      <div class="card">MMK 72,000<br>DiamondX1220</div>
-      <div class="card">MMK 82,000<br>DiamondX1412</div>
-      <div class="card">MMK 123,500<br>DiamondX2195</div>  
-      <div class="card">MMK 164,500<br>DiamondX2901</div>
-
-
-
-
-
+  <h2 style="margin-top: 30px;">ငွေလွှဲအကောင့်များ</h2>
+  <div id="accountDisplay">
+    <div class='account-entry'><div><b>Wave Pay</b><br>09966674258</div><button onclick="navigator.clipboard.writeText('09966674258')">Copy</button></div>
+    <div class='account-entry'><div><b>KBZ Pay</b><br>09777725086</div><button onclick="navigator.clipboard.writeText('09777725086')">Copy</button></div>
   </div>
 
-    <div class="button-group">
-      <a href="https://connect.viber.com/business/ab5d1740-afae-11ef-bc91-5e63d64eabf6?utm_source=manage&utm_medium=copy_link" class="contact-button" target="_blank">Viber သို့ စာပို့ရန်</a>
-      <a href="https://m.me/heinhsan341998" class="contact-button" target="_blank">Messenger သို့ စာပို့ရန်</a>
-    </div>
+  <div class="diamond-list" id="diamondList"></div>
 
-    <div class="buy-now">BUY NOW</div>
+  <div class="button-group">
+    <div class="buy-now" onclick="submitOrder()">BUY NOW</div>
+    <a href="https://connect.viber.com/business/..." class="contact-button" target="_blank">Viber သို့ စာပို့ရန်</a>
+    <a href="https://m.me/heinhsan341998" class="contact-button" target="_blank">Messenger သို့ စာပို့ရန်</a>
   </div>
+
+  <script>
+    const diamonds = [
+      { price: "MMK 6,500", label: "Weekly Pass" },
+      { price: "MMK 5,500", label: "DiamondX86" },
+      { price: "MMK 10,500", label: "DiamondX172" },
+      { price: "MMK 15,500", label: "DiamondX257" },
+      { price: "MMK 21,000", label: "DiamondX343" },
+      { price: "MMK 26,000", label: "DiamondX429" },
+      { price: "MMK 31,000", label: "DiamondX514" },
+      { price: "MMK 37,500", label: "DiamondX600" },
+      { price: "MMK 50,000", label: "DiamondX858" },
+      { price: "MMK 72,000", label: "DiamondX1220" },
+      { price: "MMK 95,000", label: "DiamondX1500" },
+      { price: "MMK 125,000", label: "DiamondX1850" },
+      { price: "MMK 155,000", label: "DiamondX2200" },
+      { price: "MMK 195,000", label: "DiamondX2700" },
+      { price: "MMK 240,000", label: "DiamondX3200" }
+    ];
+
+    const diamondList = document.getElementById("diamondList");
+    let selectedDiamond = null;
+
+    diamonds.forEach((d) => {
+      const div = document.createElement("div");
+      div.className = "diamond-item";
+      div.innerText = `${d.price}\n${d.label}`;
+      div.onclick = () => {
+        document.querySelectorAll(".diamond-item").forEach((item) => item.classList.remove("selected"));
+        div.classList.add("selected");
+        selectedDiamond = d;
+      };
+      diamondList.appendChild(div);
+    });
+
+    function submitOrder() {
+      const accountId = document.getElementById("accountId").value;
+      const serverId = document.getElementById("serverId").value;
+      const paymentMethod = document.getElementById("paymentMethod").value;
+      const transactionId = document.getElementById("transactionId").value;
+      const diamond = selectedDiamond ? `${selectedDiamond.price} - ${selectedDiamond.label}` : "မရွေးရသေးပါ";
+
+      const message = `<b>Diamond Order</b>%0AAccount ID: ${accountId}%0AServer ID: ${serverId}%0APayment Method: ${paymentMethod}%0ATransaction ID: ${transactionId}%0APackage: ${diamond}`;
+
+      const chatId = "1658902231";
+      const botToken = "7724485563:AAEEl9a_i5B_R7OI--AIFf9BkzCnIcHpybE";
+      const telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}&parse_mode=HTML`;
+
+      fetch(telegramUrl)
+        .then(response => response.json())
+        .then(data => alert("Order submitted via Telegram!"))
+        .catch(err => alert("Telegram error: " + err));
+    }
+  </script>
 </body>
 </html>
